@@ -31,10 +31,7 @@ EX: '=ex=';
 
 
 IDENTIFIER
- : '"' (~'"' | '""')* '"'
- | '`' (~'`' | '``')* '`'
- | '[' ~']'* ']'
- | [a-zA-Z_] [a-zA-Z_0-9]*
+ : [a-zA-Z_] [a-zA-Z_0-9]*
  ;
 
 boolean_value
@@ -60,8 +57,12 @@ NUMERIC_LITERAL
     ;
 
 STRING_LITERAL
-    : '\'' ( ~'\'' | '\'\'' )* '\''
+    : '\'' ( STRING_ESCAPE_SEQ | ~[\\\r\n'] )* '\''
+    | '"' ( STRING_ESCAPE_SEQ | ~[\\\r\n"] )* '"'
     ;
 
+STRING_ESCAPE_SEQ
+    : '\\' .
+    ;
 
 fragment DIGIT : [0-9];

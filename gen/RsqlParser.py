@@ -5,7 +5,7 @@ from io import StringIO
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\24")
+        buf.write("\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\25")
         buf.write("\65\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\3\2\3\2\3\2\3\2\3")
         buf.write("\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\5\2\31\n\2\3\2")
         buf.write("\3\2\3\2\7\2\36\n\2\f\2\16\2!\13\2\3\3\3\3\3\4\3\4\3\5")
@@ -44,7 +44,7 @@ class RsqlParser ( Parser ):
     symbolicNames = [ "<INVALID>", "TRUE", "FALSE", "AND_OPERATOR", "OR_OPERATOR", 
                       "L_PAREN", "R_PAREN", "EQ", "NE", "IN", "NIN", "GT", 
                       "LT", "GTE", "LTE", "EX", "IDENTIFIER", "NUMERIC_LITERAL", 
-                      "STRING_LITERAL" ]
+                      "STRING_LITERAL", "STRING_ESCAPE_SEQ" ]
 
     RULE_statement = 0
     RULE_boolean_value = 1
@@ -72,6 +72,7 @@ class RsqlParser ( Parser ):
     IDENTIFIER=16
     NUMERIC_LITERAL=17
     STRING_LITERAL=18
+    STRING_ESCAPE_SEQ=19
 
     def __init__(self, input:TokenStream):
         super().__init__(input)
