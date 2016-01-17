@@ -28,10 +28,7 @@ class Tiny(QueryGeneratingVisitor):
 		elif operator == '=le=':
 			return where(key) <= values
 		elif operator == '=ex=':
-			if values == True:
-				return where(key).exists()
-			else:
-				return ~where(key).exists()
+			return where(key).exists() if values == True else ~where(key).exists()
 		elif operator == '=in=':
 			return where(key).any(values)
 		elif operator == '=out=':
