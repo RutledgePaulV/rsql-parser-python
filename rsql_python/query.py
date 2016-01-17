@@ -1,7 +1,7 @@
 from gen.RsqlParser import *
 from gen.RsqlLexer import *
 from gen.RsqlVisitor import *
-
+import ast
 
 class QueryGeneratingVisitor(object):
 
@@ -49,7 +49,7 @@ class Visitor(RsqlVisitor):
 			else:
 				return int(ctx.getText())
 		elif ctx.STRING_LITERAL():
-			return str(ctx.getText())
+			return ast.literal_eval(ctx.getText())
 		else:
 			raise NotImplementedError
 
