@@ -17,6 +17,15 @@ class RsqlListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by RsqlParser#comparison.
+    def enterComparison(self, ctx:RsqlParser.ComparisonContext):
+        pass
+
+    # Exit a parse tree produced by RsqlParser#comparison.
+    def exitComparison(self, ctx:RsqlParser.ComparisonContext):
+        pass
+
+
     # Enter a parse tree produced by RsqlParser#boolean_value.
     def enterBoolean_value(self, ctx:RsqlParser.Boolean_valueContext):
         pass

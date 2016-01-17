@@ -14,6 +14,11 @@ class RsqlVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by RsqlParser#comparison.
+    def visitComparison(self, ctx:RsqlParser.ComparisonContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by RsqlParser#boolean_value.
     def visitBoolean_value(self, ctx:RsqlParser.Boolean_valueContext):
         return self.visitChildren(ctx)

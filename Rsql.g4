@@ -5,13 +5,16 @@ options {
 }
 
 statement
-    : statement ( AND_OPERATOR | OR_OPERATOR ) statement
-    | L_PAREN statement R_PAREN
-    | IDENTIFIER ( EQ | NE | GT | GTE | LT | LTE ) single_value
-    | IDENTIFIER ( IN | NIN ) multi_value
-    | IDENTIFIER ( EX ) boolean_value
+    : left=statement op=( AND_OPERATOR | OR_OPERATOR ) right=statement
+    | L_PAREN wrapped=statement R_PAREN
+    | node=comparison
     ;
 
+comparison
+    : key=IDENTIFIER op=( EQ | NE | GT | GTE | LT | LTE ) value=single_value
+    | key=IDENTIFIER op=( IN | NIN ) value=multi_value
+    | key=IDENTIFIER op=EX value=boolean_value
+    ;
 
 TRUE: 'true';
 FALSE: 'false';
