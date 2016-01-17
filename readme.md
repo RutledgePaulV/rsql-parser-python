@@ -32,6 +32,8 @@ class Reflect(QueryGeneratingVisitor):
 result = parse("(abasdfasd=ex=true;thing=='stuff'),something!=3.0", Reflect())
 
 print(result)
+
+# (abasdfasd=ex=True;thing=='stuff'),something!=3.0
 ```
 
 ### License
