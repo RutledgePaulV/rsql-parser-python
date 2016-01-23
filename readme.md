@@ -1,6 +1,6 @@
 ### rsql-python
 
-A python parser and tree visiting library for RSQL (resource query language). Lexer and parser
+A python parser and AST visiting library for RSQL (resource query language). Lexer and parser
 are generated using an antlr4 grammar. RSQL is a concise query language that makes an ideal
 candidate for flexible query support on list endpoints of a rest api.
 
